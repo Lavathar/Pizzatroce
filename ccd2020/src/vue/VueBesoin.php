@@ -75,7 +75,7 @@ END;
 
         $html = <<<END
 <form  action="" method="post">
-    <h2 class="succes">$info</h2>
+    <p class="succes">$info</p>
     <h2>Création d'un besoin</h2>
     <div class="formulaire">
         <input style="text-align:center" type="text" name="description" placeholder="Description">
