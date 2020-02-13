@@ -42,6 +42,8 @@ class VueCreneau
                 break;
             case 1:
                 $contenu = $this->afficherAllCrenaux();
+            case 2:
+                $contenu = $this->afficherCreneauDetail();
             default:
                 break;
         }
@@ -60,10 +62,21 @@ class VueCreneau
 	$header
     
     $contenu
+    
+    <footer>
+    <h3>©Pizzatroce 2020</h3>
+</footer>
 </body>
 <html>
 END;
         return $html;
+    }
+
+    private function afficherCreneauDetail(){
+        $creneau = $this->elem['creneau'];
+        $besoins = $this->elem['besoins'];
+
+        
     }
 
 

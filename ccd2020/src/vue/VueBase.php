@@ -99,9 +99,9 @@ END;
      */
     private function afficherAccueil() :string {
         $html = <<<END
-<div class="accueil">
-    <h1>Accueil</h1>
-</div>
+<footer>
+    <h3>©Pizzatroce 2020</h3>
+</footer>
 END;
         return $html;
     }

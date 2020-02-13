@@ -3,6 +3,7 @@
 
 namespace pizzatroce\controleur;
 
+use pizzatroce\model\Besoin;
 use pizzatroce\model\Creneau;
 use pizzatroce\vue\VueCreneau;
 
@@ -55,33 +56,26 @@ class ControleurCreneau
                 $creneau->save();
                 $vue = new VueCreneau("", $path);
                 $html = $vue->render(0);
-
-            /*$memeJour = Creneau::where('jour', '=', $jour)
-                ->where('semaine', '=', $semaine)
-                ->whereBetween($hDeb, array())
-                ->whereBetween($hFin, 'hDeb', 'hFin')
-                ->first();
-
-            if (is_null($memeJour)) {
-                $creneau = new Creneau();
-                $creneau->jour = $jour;
-                $creneau->semaine = $semaine;
-                $creneau->hDebut = $hDeb;
-                $creneau->hFin = $hFin;
-                $creneau->save();
-                $vue = new VueCreneau("", $path);
-                $html = $vue->render(0);
-           } else {
-                $vue = new VueCreneau("Le creneau existe deja", $path);
-                $html = $vue->render(0);
-            }
-            */
         }
         $rs->getBody()->write($html);
         return $rs;
     }
 
-    public function afficherCreneau($rq, $rs, $args){
+    public function creneau($rq, $rs, $args){
+        $path = $rq->getURI()->getBasePath();
+        $id_creneau = $args['id'];
+
+        $besoins = Besoin::where('id','=', $id_creneau)->get();
+        $creneau = Creneau::where('id','=', $id_creneau)->first();
+        $tab = array("creneau"=>$creneau, "besoins"=>$besoins);
+
+        $v = new VueCreneau($tab, $path);
+        $html = $v->render(2);
+        $rs->getBody()->write($html);
+        return $rs;
+    }
+
+    public function tableauDeBord($rq, $rs, $args){
         $path = $rq->getURI()->getBasePath();
         $listeCreneaux = array(
           "Lundi" => Creneau::where('jour','=',1)->orderBy('hDebut', 'asc')->get(),
