@@ -297,3 +297,25 @@ table{
     font-size: 2em;
     margin-top: 5em;
 }
+
+.infos_creneau {
+    display : flex;
+    justify-items: center;
+    background: #ffff;
+    padding: 2em 2em 2em;
+    max-width: 400px;
+    margin: 50px auto 0;
+    border-radius: 2px;
+    color: grey;
+    height: 10px;
+}
+
+.infos_besoin {
+    display : flex;
+    justify-items: center;
+    background: #ffff;
+    padding: 2em 2em 2em;
+    max-width: 400px;
+    margin: 00px auto;
+    color: grey;
+}

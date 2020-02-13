@@ -66,7 +66,7 @@ class ControleurCreneau
         $path = $rq->getURI()->getBasePath();
         $id_creneau = $args['id'];
 
-        $besoins = Besoin::where('id','=', $id_creneau)
+        $besoins = Besoin::where('creneau','=', $id_creneau)
             ->get();
         $roles = Role::select('*')
             ->get();
