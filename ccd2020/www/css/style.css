@@ -44,6 +44,15 @@ body {
 }
 
 
+select {
+    width: 220px;
+    height: 45px;
+    margin: 0;
+    padding-left: 15px;
+    cursor: pointer;
+    border: 1px solid #dbdbdb;
+    font-size: 1em;
+}
 
 header {
     background: #d63031;
@@ -139,6 +148,7 @@ input[type="password"],
 input[type="date"],
 input[type="number"],
 input[type="url"]{
+    width: 200px;
     background: #fff;
     border: 1px solid #dbdbdb;
     font-size: 1em;
