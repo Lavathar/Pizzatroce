@@ -56,7 +56,7 @@ class VueCompte
 <!DOCTYPE html>
 	<head>
 		<meta charset="utf-8">
-		<link rel="stylesheet" href="$path/css/style.css">
+		<link rel="stylesheet" href="$path/../css/style.css">
 		<title>Pizzatroce</title>
 	</head>
 <body>
@@ -153,7 +153,7 @@ END;
         $html = <<<END
 <header>
      <div id="rubrique">
-         <h1 id="titreR"><a href="$path/accueil">Pizzatroce </a></h1>
+         <h1 id="titreR"><a href="$path/">Pizzatroce </a></h1>
          <nav>
              <ul>
                   $option

@@ -26,7 +26,7 @@ $app = new \Slim\App($c);
 ////           ACCUEIL                ////
 //////////////////////////////////////////
 
-$app->get('/accueil[/]',
+$app->get('[/]',
     function($req, $resp, $args) {
         $controleur = new ControleurCompte($this);
         return $controleur->afficherAccueil($req, $resp, $args);
