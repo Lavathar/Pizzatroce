@@ -101,7 +101,8 @@ END;
     private function afficherFromulaireConnexion() : string {
 
         $erreur = "";
-        if ($this->elem == false)
+        $users = $this->elem["user"];
+        if ($this->elem["etat"] == false)
             $erreur = "<h3>Mot de passe ou nom d'utilisateur incorrect(s)</h3>";
 
         $html = <<<END
@@ -118,6 +119,20 @@ $erreur
         <input type="submit" value="Valider">
     </div>
 </form>
+<div class="users">
+END;
+        foreach ($users as $user) {
+           $html .=  <<<END
+<div class="user">
+<img src="../../bdd/img/$user->id.jpg">
+<form class="user" action="" method="post">
+    <button type="submit" name="nom" value=$user->nom class="btn-link">$user->nom</button>
+</form>
+</div>
+END;
+        }
+$html .= <<<END
+</div>
 END;
         return $html;
     }

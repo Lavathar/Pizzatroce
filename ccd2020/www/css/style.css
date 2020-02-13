@@ -261,3 +261,32 @@ table{
     vertical-align: middle;
     display: table-cell;
 }
+
+.users {
+    display : flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 50px;
+}
+
+.user {
+    background: none;
+    border: none;
+    box-shadow: none;
+    vertical-align: auto;
+    text-align: center;
+    margin: 0px;
+}
+
+.btn-link {
+    border: none;
+    outline: none;
+    background: none;
+    cursor: pointer;
+    color: #0000EE;
+    padding: 0;
+    text-decoration: underline;
+    font-family: inherit;
+    font-size: inherit;
+}
