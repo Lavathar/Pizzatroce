@@ -6,6 +6,7 @@ require '../src/vendor/autoload.php';
 
 use pizzatroce\bd\Eloquent;
 use pizzatroce\controleur\ControleurBase;
+use pizzatroce\controleur\ControleurBesoin;
 use pizzatroce\controleur\ControleurCompte;
 use\Psr\Http\Message\ServerRequestInterface as Request;
 use \Psr\Http\Message\ResponseInterface as Response;
@@ -38,7 +39,6 @@ $app->get('[/]',
 ////           COMPTES                ////
 //////////////////////////////////////////
 
-
 $app->get('/inscription[/]',
     function($req, $resp, $args){
         $controleur = new ControleurCompte($this);
@@ -69,5 +69,15 @@ $app->get('/deconnexion[/]',
         return $controleur->seDeconnecter($req, $resp, $args);
     });
 
+
+//////////////////////////////////////////
+////           BESOINS                ////
+//////////////////////////////////////////
+
+$app->get('/besoin[/]',
+    function($req, $resp, $args){
+        $controleur = new ControleurBesoin($this);
+        return $controleur->creerBesoin($req, $resp, $args);
+    });
 
 $app->run();

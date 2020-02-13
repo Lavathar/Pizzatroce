@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  jeu. 13 fév. 2020 à 10:32
+-- Généré le :  jeu. 13 fév. 2020 à 12:37
 -- Version du serveur :  10.4.10-MariaDB
 -- Version de PHP :  7.3.12
 
@@ -21,6 +21,21 @@ SET time_zone = "+00:00";
 --
 -- Base de données :  `coboard`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `besoin`
+--
+
+DROP TABLE IF EXISTS `besoin`;
+CREATE TABLE IF NOT EXISTS `besoin` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `creneau` int(11) NOT NULL,
+  `role` int(1) NOT NULL,
+  `description` text DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -58,27 +73,28 @@ CREATE TABLE IF NOT EXISTS `user` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nom` varchar(30) NOT NULL,
   `mdp` varchar(255) DEFAULT NULL,
+  `role` int(11) NOT NULL DEFAULT -1,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `user`
 --
 
-INSERT INTO `user` (`id`, `nom`, `mdp`) VALUES
-(1, 'Cassandre', ''),
-(2, 'Achille', ''),
-(3, 'Calypso', ''),
-(4, 'Bacchus', ''),
-(5, 'Diane', ''),
-(6, 'Clark', ''),
-(7, 'Helene', ''),
-(8, 'Jason', ''),
-(9, 'Bruce', ''),
-(10, 'Pénélope', ''),
-(11, 'Ariane', ''),
-(12, 'Lois', ''),
-(15, 'test', '$2y$10$clYLmNxzv.NHPCToxd1wm.z.Uf5Myho5DQAR/z6GqUe5ahmRUF.AS');
+INSERT INTO `user` (`id`, `nom`, `mdp`, `role`) VALUES
+(1, 'Cassandre', '', 0),
+(2, 'Achille', '', 0),
+(3, 'Calypso', '', 0),
+(4, 'Bacchus', '', 0),
+(5, 'Diane', '', 0),
+(6, 'Clark', '', 0),
+(7, 'Helene', '', 0),
+(8, 'Jason', '', 0),
+(9, 'Bruce', '', 0),
+(10, 'Pénélope', '', 0),
+(11, 'Ariane', '', 0),
+(12, 'Lois', '', 0),
+(15, 'test', '$2y$10$clYLmNxzv.NHPCToxd1wm.z.Uf5Myho5DQAR/z6GqUe5ahmRUF.AS', 0);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
