@@ -25,6 +25,27 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `creneau`
+--
+
+DROP TABLE IF EXISTS `creneau`;
+CREATE TABLE `creneau` (
+  `id` int(11) NOT NULL,
+  `jour` int(1) NOT NULL,
+  `semaine` varchar(1) NOT NULL,
+  `hDebut` int(2) NOT NULL,
+  `hFin` int(2) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+ALTER TABLE `creneau`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id` (`id`);
+
+ALTER TABLE `creneau`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `besoin`
 --
 
