@@ -106,7 +106,7 @@ END;
         {
             $tab = $tab.'<div class="colonne"><h3 class="jour">'.$key.'</h3>';
             foreach ($jour as $c)
-                $tab = $tab.'<div class="creneau"><a href="'.$this->path.'/creneauDetail'"><p>'.$c->hDebut." - ".$c->hFin.'</p></a></div>';
+                $tab = $tab.'<div class="creneau"><a href="'.$this->path.'/creneauDetail'"><p>'.$c->hDebut.' - '.$c->hFin.'</p></a></div>';
             $tab = $tab.'</div>';
         }
         return $tab."</div>";
