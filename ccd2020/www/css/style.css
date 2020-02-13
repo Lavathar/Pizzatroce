@@ -118,6 +118,12 @@ h2 {
     justify-content : center;
 }
 
+.erreur {
+    display : flex;
+    justify-content : center;
+    color: #d63031;
+}
+
 p{
     margin-bottom: 0;
     margin-left : 4em;
@@ -195,4 +201,18 @@ input[type="submit"] {
 .formSuppListe {
     background: none;
     box-shadow: none;
+}
+
+tr{
+    color: #222;
+    
+}
+
+
+table{
+    box-shadow: 0 0 1em #222;
+    border-radius: 5px;
+    max-width: 400px;
+    display: block;
+    margin: 50px auto 0;
 }

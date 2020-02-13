@@ -86,16 +86,16 @@ $app->post('/creneau[/]',
 ////           BESOINS                ////
 //////////////////////////////////////////
 
-$app->get('/besoin[/]',
+$app->post('/besoin[/]',
     function($req, $resp, $args){
         $controleur = new ControleurBesoin($this);
         return $controleur->creerBesoin($req, $resp, $args);
     });
 
-$app->post('/besoin[/]',
+$app->get('/afficherUsers[/]',
     function($req, $resp, $args){
-        $controleur = new ControleurBesoin($this);
-        return $controleur->creerBesoin($req, $resp, $args);
+        $controleur = new ControleurCompte($this);
+        return $controleur->allUser($req, $resp, $args);
     });
 
 $app->run();

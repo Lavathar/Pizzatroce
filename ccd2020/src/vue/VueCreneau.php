@@ -34,10 +34,14 @@ class VueCreneau
      * @param int $index numero de la methode à utiliser
      * @return string contenu html
      */
-    public function render(int $index) : string {
-        switch ($index){
-            case 0 :
+    public function render(int $index): string
+    {
+        switch ($index) {
+            case 0:
                 $contenu = $this->afficherFormulaireAjoutCreneau();
+                break;
+            default:
+
                 break;
         }
 
@@ -63,8 +67,11 @@ END;
 
 
     private function afficherFormulaireAjoutCreneau() : string {
+        $erreur = $this->elem;
+
         $html = <<<END
 <form  action="" method="post">
+    <h3 class="erreur">$erreur</h3>
     <h2>Ajouter un Creneau</h2>
     <div class="formulaire">
         <input style="text-align:center" type="number" name="jour" placeholder="Jour" min="1" max="7" step="1" required>
@@ -90,5 +97,4 @@ END;
 END;
         return $html;
     }
-
 }
