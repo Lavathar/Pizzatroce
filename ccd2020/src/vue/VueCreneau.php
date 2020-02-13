@@ -34,10 +34,14 @@ class VueCreneau
      * @param int $index numero de la methode à utiliser
      * @return string contenu html
      */
-    public function render(int $index) : string {
-        switch ($index){
-            case 0 :
+    public function render(int $index): string
+    {
+        switch ($index) {
+            case 0:
                 $contenu = $this->afficherFormulaireAjoutCreneau();
+                break;
+            default:
+
                 break;
         }
 
@@ -93,5 +97,4 @@ END;
 END;
         return $html;
     }
-
 }
