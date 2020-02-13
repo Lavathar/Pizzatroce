@@ -94,7 +94,13 @@ CREATE TABLE IF NOT EXISTS `user` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nom` varchar(30) NOT NULL,
   `mdp` varchar(255) DEFAULT NULL,
-  `role` int(11) NOT NULL DEFAULT -1,
+  `role` int(11) NOT NULL DEFAULT '-1',
+  `prenom` varchar(256) NOT NULL,
+  `mail` varchar(256) NOT NULL,
+  `tel` varchar(256) NOT NULL,
+  `photo` varchar(256) NOT NULL,
+  `permanence` int(11) NOT NULL,
+  `absence` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
 
