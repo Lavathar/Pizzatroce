@@ -42,6 +42,7 @@ class VueCreneau
                 break;
             case 1:
                 $contenu = $this->afficherAllCrenaux();
+                break;
             case 2:
                 $contenu = $this->afficherCreneauDetail();
             default:
@@ -73,9 +74,9 @@ END;
     }
 
     private function afficherCreneauDetail(){
-        $creneau = $this->elem['creneau'];
-        $besoins = $this->elem['besoins'];
-
+        //$creneau = $this->elem['creneau'];
+        //$besoins = $this->elem['besoins'];
+        return "";
         
     }
 
