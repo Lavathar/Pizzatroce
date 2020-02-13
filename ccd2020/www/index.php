@@ -75,6 +75,12 @@ $app->get('/creneau[/]',
         //return $controleur->methode($req, $resp, $args);
     });
 
+$app->post('/creneau[/]',
+    function($req, $resp, $args){
+        $controleur = new ControleurCreneau($this);
+        //return $controleur->methode($req, $resp, $args);
+    });
+
 //////////////////////////////////////////
 ////           BESOINS                ////
 //////////////////////////////////////////
