@@ -251,6 +251,7 @@ table{
 }
 
 .creneau > p{
+    width: 200px;
     color: black;
     margin: 5px;
     vertical-align: middle;
