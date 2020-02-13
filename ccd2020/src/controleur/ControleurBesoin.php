@@ -4,7 +4,9 @@
 namespace pizzatroce\controleur;
 
 
+use pizzatroce\model\Besoin;
 use pizzatroce\model\Creneau;
+use pizzatroce\model\Role;
 use pizzatroce\vue\VueBesoin;
 
 class ControleurBesoin
@@ -17,17 +19,23 @@ class ControleurBesoin
         if (! isset($rq->getParsedBody()['jour'])) {
             $crenaux = Creneau::select("*")
                 -> get();
+            $roles = Role::select("*")
+                ->get();
 
-            $vue = new VueBesoin($crenaux, $path);
+            $elem = array("roles"=>$roles, "creneaux"=>$crenaux);
+            $vue = new VueBesoin($elem, $path);
             $html = $vue->render(0);
         }
         else {
             $desc = $rq->getParsedBody()['description'];
-            $jour = $rq->getParsedBody()['jour'];
-            $semaine = $rq->getParsedBody()['semaine'];
+            $role = $rq->getParsedBody()['role'];
+            $creneau = $rq->getParsedBody()['creneau'];
+            $id_creneau = substr($creneau, 1);
 
-            $verif = $jour<8 && $jour>0
-                && (semaine=='A'||semaine=='B'||semaine=='C'||semaine=='D');
+            $besoin = new Besoin();
+            $besoin->creneau =  $id_creneau;
+            if (!is_null($desc)) $besoin->description = $desc;
+            $besoin->role=$role;
 
         }
 
