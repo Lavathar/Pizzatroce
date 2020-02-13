@@ -4,7 +4,7 @@
 namespace pizzatroce\controleur;
 
 
-use pizzatroce\models\Utilisateur;
+use pizzatroce\model\User;
 use pizzatroce\vue\VueCompte;
 
 /**
@@ -53,7 +53,7 @@ class ControleurCompte
             filter_var($pseudo, FILTER_SANITIZE_STRING);
             filter_var($mdp, FILTER_SANITIZE_STRING);
 
-            $compteDejaCree = Utilisateur::where ('username', '=', $pseudo)->first();
+            $compteDejaCree = User::where ('nom', '=', $pseudo)->first();
 
             if (is_null($compteDejaCree)) {
                 Authentification::createUser($pseudo, $mdp);

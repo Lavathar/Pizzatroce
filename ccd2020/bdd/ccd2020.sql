@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.6deb5
+-- version 4.9.2
 -- https://www.phpmyadmin.net/
 --
--- Client :  localhost:3306
--- Généré le :  Ven 07 Février 2020 à 09:31
--- Version du serveur :  5.7.29-0ubuntu0.18.04.1
--- Version de PHP :  7.2.24-0ubuntu0.18.04.2
+-- Hôte : 127.0.0.1:3306
+-- Généré le :  jeu. 13 fév. 2020 à 10:32
+-- Version du serveur :  10.4.10-MariaDB
+-- Version de PHP :  7.3.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -26,13 +28,15 @@ SET time_zone = "+00:00";
 -- Structure de la table `role`
 --
 
-CREATE TABLE `role` (
-  `id` int(11) NOT NULL,
-  `label` varchar(128) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+DROP TABLE IF EXISTS `role`;
+CREATE TABLE IF NOT EXISTS `role` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `label` varchar(128) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 --
--- Contenu de la table `role`
+-- Déchargement des données de la table `role`
 --
 
 INSERT INTO `role` (`id`, `label`) VALUES
@@ -49,60 +53,34 @@ INSERT INTO `role` (`id`, `label`) VALUES
 -- Structure de la table `user`
 --
 
-CREATE TABLE `user` (
-  `id` int(11) NOT NULL,
-  `nom` varchar(30) CHARACTER SET utf8 NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+DROP TABLE IF EXISTS `user`;
+CREATE TABLE IF NOT EXISTS `user` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nom` varchar(30) NOT NULL,
+  `mdp` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
 
 --
--- Contenu de la table `user`
+-- Déchargement des données de la table `user`
 --
 
-INSERT INTO `user` (`id`, `nom`) VALUES
-(1, 'Cassandre'),
-(2, 'Achille'),
-(3, 'Calypso'),
-(4, 'Bacchus'),
-(5, 'Diane'),
-(6, 'Clark'),
-(7, 'Helene'),
-(8, 'Jason'),
-(9, 'Bruce'),
-(10, 'Pénélope'),
-(11, 'Ariane'),
-(12, 'Lois');
+INSERT INTO `user` (`id`, `nom`, `mdp`) VALUES
+(1, 'Cassandre', ''),
+(2, 'Achille', ''),
+(3, 'Calypso', ''),
+(4, 'Bacchus', ''),
+(5, 'Diane', ''),
+(6, 'Clark', ''),
+(7, 'Helene', ''),
+(8, 'Jason', ''),
+(9, 'Bruce', ''),
+(10, 'Pénélope', ''),
+(11, 'Ariane', ''),
+(12, 'Lois', ''),
+(15, 'test', '$2y$10$clYLmNxzv.NHPCToxd1wm.z.Uf5Myho5DQAR/z6GqUe5ahmRUF.AS');
+COMMIT;
 
---
--- Index pour les tables exportées
---
-
---
--- Index pour la table `role`
---
-ALTER TABLE `role`
-  ADD PRIMARY KEY (`id`);
-
---
--- Index pour la table `user`
---
-ALTER TABLE `user`
-  ADD PRIMARY KEY (`id`);
-
---
--- AUTO_INCREMENT pour les tables exportées
---
-
---
--- AUTO_INCREMENT pour la table `role`
---
-ALTER TABLE `role`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-
---
--- AUTO_INCREMENT pour la table `user`
---
-ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

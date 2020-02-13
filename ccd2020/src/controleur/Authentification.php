@@ -24,6 +24,7 @@ class Authentification
 
         $newUser = new User();
         $newUser->nom = $userName;
+        $newUser->mdp = $hash;
         $newUser->save();
     }
 
@@ -34,11 +35,11 @@ class Authentification
      */
     public static function authenticate( $username, $password) {
         $user = User::select('*')
-            ->where("username","=",$username)
+            ->where("nom","=",$username)
             ->first();
 
         if (is_null($user)) return false;
-            if (password_verify($password, $user->password)) {
+            if (password_verify($password, $user->mdp)) {
                 self::loadProfile($user);
                 return true;
             }
