@@ -74,6 +74,10 @@ END;
     }
 
     private function afficherCreneauDetail(){
+        $jours = array (
+          1=>"Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche"
+        );
+
         $creneau = $this->elem['creneau'];
         $besoins = $this->elem['besoins'];
         $id = $this->elem['id'];
@@ -91,10 +95,7 @@ END;
 
         $html = <<<END
 <div class="infos_creneau">
-    <p>$jour</p>
-    <p>$semaine</p>
-    <p>$hDebut</p>
-    <p>$hFin</p>
+    <p>$jours[$jour], semaine $semaine, de $hDebut à $hFin</p>
 </div>
    $liste
    

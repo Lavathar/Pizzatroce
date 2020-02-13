@@ -301,5 +301,16 @@ footer {
 footer > h3 {
     text-align: center;
     color: white;
+}
 
+.infos_creneau {
+    display: flex;
+    justify-items: center;
+    background: #ffff;
+    padding: 2em 2em 2em;
+    max-width: 400px;
+    margin: 50px auto 0;
+    box-shadow: 0 0 1em #222;
+    border-radius: 2px;
+    color: grey;
 }
