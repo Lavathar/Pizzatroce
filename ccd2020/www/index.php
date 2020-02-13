@@ -8,6 +8,7 @@ use pizzatroce\bd\Eloquent;
 use pizzatroce\controleur\ControleurBase;
 use pizzatroce\controleur\ControleurBesoin;
 use pizzatroce\controleur\ControleurCompte;
+use pizzatroce\controleur\ControleurCreneau;
 use\Psr\Http\Message\ServerRequestInterface as Request;
 use \Psr\Http\Message\ResponseInterface as Response;
 
@@ -72,13 +73,13 @@ $app->get('/deconnexion[/]',
 $app->get('/creneau[/]',
     function($req, $resp, $args){
         $controleur = new ControleurCreneau($this);
-        //return $controleur->methode($req, $resp, $args);
+        return $controleur->creerCreneau($req, $resp, $args);
     });
 
 $app->post('/creneau[/]',
     function($req, $resp, $args){
         $controleur = new ControleurCreneau($this);
-        //return $controleur->methode($req, $resp, $args);
+        return $controleur->creerCreneau($req, $resp, $args);
     });
 
 //////////////////////////////////////////

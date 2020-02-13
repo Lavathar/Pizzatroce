@@ -67,16 +67,16 @@ END;
 <form  action="" method="post">
     <h2>Ajouter un Creneau</h2>
     <div class="formulaire">
-        <input style="text-align:center" type="number" name="jour" placeholder="Jour" min="1" max="31" step="1" required>
+        <input style="text-align:center" type="number" name="jour" placeholder="Jour" min="1" max="7" step="1" required>
     </div>
     <div class="formulaire">
         <input style="text-align:center" type="text" name="semaine" placeholder="Semaine" required>
     </div>
     <div class="formulaire">
-        <input style="text-align:center" type="number" name="hDeb" placeholder="Heure de Debut" required>
+        <input style="text-align:center" type="number" name="hDeb" placeholder="H.Debut" min="1" max="24" step="1" required>
     </div>
     <div class="formulaire">
-        <input style="text-align:center" type="number" name="hFin" placeholder="Heure de Fin" required>
+        <input style="text-align:center" type="number" name="hFin" placeholder="H.Fin" min="1" max="24" step="1" required>
     </div>
     <div class="formulaire">
         <input type="submit" value="Valider">
