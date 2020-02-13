@@ -44,13 +44,10 @@ class VueCompte
             case 1 :
                 $contenu = $this->afficherFromulaireConnexion();
                 break;
-            case 2 :
-                $contenu = $this->afficherAccueil();
-                break;
         }
 
         $path = $this->path;
-        $header = self::getHeader($path);
+        $header = VueBase::getHeader($path);
 
         $html = <<<END
 <!DOCTYPE html>
@@ -65,20 +62,6 @@ class VueCompte
     $contenu
 </body>
 <html>
-END;
-        return $html;
-    }
-
-
-    /**
-     * Methode qui affiche l'accueil
-     * @return string contenu html
-     */
-    private function afficherAccueil() :string {
-        $html = <<<END
-<div class="accueil">
-    <h1>Accueil</h1>
-</div>
 END;
         return $html;
     }
@@ -130,38 +113,6 @@ $erreur
         <input type="submit" value="Valider">
     </div>
 </form>
-END;
-        return $html;
-    }
-
-
-    /**
-     * Methode static qui creer le header
-     * @return string contenu html
-     */
-    public static function getHeader($path) : string {
-        if (isset($_SESSION['profile'])) {
-            $pseudo = $_SESSION['profile']['username'];
-            $option = "<li><a href=\"$path/creation/listes\">Mes Listes</a></li>
-                        <li><a href=\"$path/deconnexion\">Se déconnecter</a></li>
-		                <li>$pseudo</li>";
-        } else {
-            $option = "<li><a href=\"$path/connexion\">Se connecter</a></li>
-		                <li><a href=\"$path/inscription\">S'inscrire</a></li>";
-        }
-
-        $html = <<<END
-<header>
-     <div id="rubrique">
-         <h1 id="titreR"><a href="$path/">Pizzatroce </a></h1>
-         <nav>
-             <ul>
-                  $option
-             </ul>
-         </nav>
-     </div>
-</header>
-
 END;
         return $html;
     }

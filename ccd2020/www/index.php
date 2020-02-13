@@ -5,6 +5,7 @@ namespace pizzatroce;
 require '../src/vendor/autoload.php';
 
 use pizzatroce\bd\Eloquent;
+use pizzatroce\controleur\ControleurBase;
 use pizzatroce\controleur\ControleurCompte;
 use\Psr\Http\Message\ServerRequestInterface as Request;
 use \Psr\Http\Message\ResponseInterface as Response;
@@ -28,7 +29,7 @@ $app = new \Slim\App($c);
 
 $app->get('[/]',
     function($req, $resp, $args) {
-        $controleur = new ControleurCompte($this);
+        $controleur = new ControleurBase($this);
         return $controleur->afficherAccueil($req, $resp, $args);
     });
 

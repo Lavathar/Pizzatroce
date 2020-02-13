@@ -5,6 +5,8 @@ namespace pizzatroce\controleur;
 
 
 use pizzatroce\model\User;
+use pizzatroce\utils\Authentification;
+use pizzatroce\vue\VueBase;
 use pizzatroce\vue\VueCompte;
 
 /**
@@ -13,23 +15,6 @@ use pizzatroce\vue\VueCompte;
  */
 class ControleurCompte
 {
-
-    /**
-     * Methode qui permet d'acceder à l'accueil
-     * @param $rq
-     * @param $rs
-     * @param $args
-     * @return mixed la reponse http
-     */
-    public function afficherAccueil($rq, $rs, $args)
-    {
-        $path = $rq->getURI()->getBasePath();
-        $vue = new VueCompte("", $path);
-
-        $html = $vue->render(2);
-        $rs->getBody()->write($html);
-        return $rs;
-    }
 
     /**
      * Methode qui permet de creer un compte createur
@@ -94,8 +79,8 @@ class ControleurCompte
 
             $etat = Authentification::authenticate($pseudo, $mdp);
             if ($etat == true) {
-                $vue = new VueCompte($etat, $path);
-                $html = $vue->render(2);
+                $vue = new VueBase($etat, $path);
+                $html = $vue->render(0);
             }
             else {
                 $vue = new VueCompte($etat, $path);
@@ -120,8 +105,8 @@ class ControleurCompte
             unset($_SESSION['profile']);
         }
 
-        $vue = new VueCompte('', $path);
-        $html = $vue->render(2);
+        $vue = new VueBase('', $path);
+        $html = $vue->render(0);
         $rs->getBody()->write($html);
         return $rs;
     }

@@ -1,7 +1,7 @@
 <?php
 
 
-namespace pizzatroce\controleur;
+namespace pizzatroce\utils;
 
 
 use pizzatroce\model\User;
