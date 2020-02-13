@@ -4,6 +4,7 @@
 namespace pizzatroce\controleur;
 
 
+use pizzatroce\model\Creneau;
 use pizzatroce\vue\VueBesoin;
 
 class ControleurBesoin
@@ -14,8 +15,20 @@ class ControleurBesoin
         $path = $rq->getURI()->getBasePath();
 
         if (! isset($rq->getParsedBody()['jour'])) {
-            $vue = new VueBesoin("", $path);
+            $crenaux = Creneau::select("*")
+                -> get();
+
+            $vue = new VueBesoin($crenaux, $path);
             $html = $vue->render(0);
+        }
+        else {
+            $desc = $rq->getParsedBody()['description'];
+            $jour = $rq->getParsedBody()['jour'];
+            $semaine = $rq->getParsedBody()['semaine'];
+
+            $verif = $jour<8 && $jour>0
+                && (semaine=='A'||semaine=='B'||semaine=='C'||semaine=='D');
+
         }
 
         $rs->getBody()->write($html);

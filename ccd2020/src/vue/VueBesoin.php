@@ -61,18 +61,21 @@ END;
     }
 
     private function afficherFormCreerBesoin(){
+        $option="";
+        foreach ($this->elem as $creneau)
+            $option = $option."<option>".$creneau->id."</option> ";
+
         $html = <<<END
 <form  action="" method="post">
     <h2>Création d'un besoin</h2>
     <div class="formulaire">
-        <input style="text-align:center" type="text" name="description" placeholder="Description" required>
+        <input style="text-align:center" type="text" name="description" placeholder="Description">
     </div>
     <h2>Créneau</h2>
     <div class="formulaire">
-        <input style="text-align:center" type="text" name="jour" placeholder="Jour" required>
-    </div>
-    <div class="formulaire">
-        <input style="text-align:center" type="text" name="semaine" placeholder="Semaine" required>
+        <select>
+            $option
+        </select>
     </div>
     <div class="formulaire">
         <input type="submit" value="Valider">
