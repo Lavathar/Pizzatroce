@@ -70,7 +70,12 @@ END;
         <input style="text-align:center" type="number" name="jour" placeholder="Jour" min="1" max="7" step="1" required>
     </div>
     <div class="formulaire">
-        <input style="text-align:center" type="text" name="semaine" placeholder="Semaine" required>
+        <select name="semaine" size="1">
+            <option>A
+            <option>B
+            <option>C
+            <option>D
+        </select>
     </div>
     <div class="formulaire">
         <input style="text-align:center" type="number" name="hDeb" placeholder="H.Debut" min="1" max="24" step="1" required>
