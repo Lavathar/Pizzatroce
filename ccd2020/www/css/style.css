@@ -1,0 +1,188 @@
+html, body{
+    margin:0;
+    padding:0;
+    background-image: url("../images/wallpaper.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.accueil {
+    display: flex;
+    justify-content: center;
+    font-size: 5em;
+    margin-top: 3em;
+}
+
+
+.liste {
+    display:flex;
+    justify-content: center;
+    padding : 50px;
+    border:2px solid white;
+    margin: auto;
+    width: 40%;
+}
+
+.lienListe {
+    text-decoration: none;
+    color: white;
+    font-size:2em;
+}
+
+a:hover {
+    color: lightgrey;
+}
+
+.lienItem {
+    text-decoration: none;
+    color: white;
+    font-size:1.1em;
+}
+
+body {
+    color: white;
+}
+
+
+
+header {
+    background: #d63031;
+    display : inline-block;
+    clear: both;
+    width:100%;
+}
+
+.ajoutListe {
+
+}
+
+.ajoutListe a {
+    text-decoration: none;
+    color:white;
+    font-weight:bold;
+}
+
+nav {
+    float:right;
+}
+nav ul li {
+    list-style:none;
+    float:left;
+    margin-left: 1px;
+    padding: 5px 10px;
+}
+
+#titreR {
+    float:left;
+    font-weight:bold;
+    font-size: 20px;
+    color: white;
+    margin-left: 10px;
+}
+
+#titreR a{
+    text-decoration: none;
+    color:white;
+    font-weight:bold;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color:white;
+    font-weight:bold;
+}
+nav a::before{
+    content: '' ;
+    display:block;
+    height:4px;
+    width:0%;
+    background-color:white;
+}
+nav a:hover::before {
+    width:100%;
+}
+
+
+h2 {
+    color:black;
+    display : flex;
+    justify-content : center;
+}
+
+p{
+    margin-bottom: 0;
+    margin-left : 4em;
+}
+
+label{
+    padding-right: 10px;
+    margin-top: 0.7em;
+}
+
+.formulaire {
+    display : flex;
+    justify-content: center;
+    padding: 15px;
+}
+
+form {
+    background: #ffff;
+    padding: 2em 2em 2em;
+    max-width: 400px;
+    margin: 50px auto 0;
+    box-shadow: 0 0 1em #222;
+    border-radius: 2px;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="date"],
+input[type="number"],
+input[type="url"]{
+    background: #fff;
+    border: 1px solid #dbdbdb;
+    font-size: 1em;
+    padding: .8em .5em;
+    border-radius: 2px;
+}
+
+input[type="date"]:before {
+    content: attr(placeholder) !important;
+    color: #aaa;
+    margin-right: 0.5em;
+    width:4em;
+}
+
+
+
+input[type="submit"] {
+    border-radius: 2px;
+    border: none;
+    color: grey;
+    cursor: pointer;
+    font-size: 1em;
+    line-height: 1.6em;
+    padding: .8em 0;
+    width: 500px;
+}
+
+.bouton {
+    display: flex;
+    margin : auto;
+    justify-content: center;
+}
+
+.formNouvelleListe {
+    background: none;
+    box-shadow: none;
+}
+
+.formModifItem {
+    background: none;
+    box-shadow: none;
+}
+
+.formSuppListe {
+    background: none;
+    box-shadow: none;
+}
