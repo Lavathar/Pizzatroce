@@ -28,8 +28,39 @@ class ControleurCreneau
             filter_var($hDeb, FILTER_SANITIZE_NUMBER_INT);
             filter_var($hFin, FILTER_SANITIZE_NUMBER_INT);
 
-            $memeJour = Creneau::where('jour', '=', $jour)->where('semaine', '=', $semaine)->get();
-            $pasDeChevauchement = Creneau::where('hDebut', '<', $hDeb)->where('hFin', '>', $hFin)->first();
+            $heure = Creneau::select('hDebut', 'hFin')
+                ->where('jour', '=', $jour)
+                ->where('semaine', '=', $semaine)
+                ->get();
+
+            foreach($heure as $h) {
+                if(($hDeb > $h->hDebut) && ($hDeb < $h->hFin)) {
+                    $vue = new VueCreneau("Le creneau existe deja", $path);
+                    $html = $vue->render(0);
+                    $rs->getBody()->write($html);
+                    return $rs;
+                }
+                elseif(($hFin > $h->hDebut) && ($hFin < $h->hFin)) {
+                    $vue = new VueCreneau("Le creneau existe deja", $path);
+                    $html = $vue->render(0);
+                    $rs->getBody()->write($html);
+                    return $rs;
+                }
+            }
+                $creneau = new Creneau();
+                $creneau->jour = $jour;
+                $creneau->semaine = $semaine;
+                $creneau->hDebut = $hDeb;
+                $creneau->hFin = $hFin;
+                $creneau->save();
+                $vue = new VueCreneau("", $path);
+                $html = $vue->render(0);
+
+            /*$memeJour = Creneau::where('jour', '=', $jour)
+                ->where('semaine', '=', $semaine)
+                ->whereBetween($hDeb, array())
+                ->whereBetween($hFin, 'hDeb', 'hFin')
+                ->first();
 
             if (is_null($memeJour)) {
                 $creneau = new Creneau();
@@ -40,19 +71,11 @@ class ControleurCreneau
                 $creneau->save();
                 $vue = new VueCreneau("", $path);
                 $html = $vue->render(0);
-           } else if (is_null($pasDeChevauchement)) {
-                $creneau = new Creneau();
-                $creneau->jour = $jour;
-                $creneau->semaine = $semaine;
-                $creneau->hDebut = $hDeb;
-                $creneau->hFin = $hFin;
-                $creneau->save();
-                $vue = new VueCreneau("", $path);
-                $html = $vue->render(0);
-            } else {
-                $vue = new VueCreneau("", $path);
+           } else {
+                $vue = new VueCreneau("Le creneau existe deja", $path);
                 $html = $vue->render(0);
             }
+            */
         }
         $rs->getBody()->write($html);
         return $rs;
