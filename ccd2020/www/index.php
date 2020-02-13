@@ -91,4 +91,11 @@ $app->get('/besoin[/]',
         return $controleur->creerBesoin($req, $resp, $args);
     });
 
+$app->get('/afficherUsers[/]',
+    function($req, $resp, $args){
+        $controleur = new ControleurCompte($this);
+        return $controleur->allUser($req, $resp, $args);
+    });
+
+
 $app->run();

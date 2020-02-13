@@ -1,8 +1,5 @@
 <?php
-
-
 namespace pizzatroce\controleur;
-
 
 use pizzatroce\model\User;
 use pizzatroce\utils\Authentification;
@@ -23,14 +20,14 @@ class ControleurCompte
      * @param $args
      * @return mixed la reponse http
      */
-    public function creerCompte($rq, $rs, $args){
+    public function creerCompte($rq, $rs, $args)
+    {
         $path = $rq->getURI()->getBasePath();
 
-        if (! isset($rq->getParsedBody()['username'])) {
+        if (!isset($rq->getParsedBody()['username'])) {
             $vue = new VueCompte("", $path);
             $html = $vue->render(0);
-        }
-        else {
+        } else {
             $pseudo = $rq->getParsedBody()['username'];
             $mdp = $rq->getParsedBody()['password'];
 
@@ -38,14 +35,13 @@ class ControleurCompte
             filter_var($pseudo, FILTER_SANITIZE_STRING);
             filter_var($mdp, FILTER_SANITIZE_STRING);
 
-            $compteDejaCree = User::where ('nom', '=', $pseudo)->first();
+            $compteDejaCree = User::where('nom', '=', $pseudo)->first();
 
             if (is_null($compteDejaCree)) {
                 Authentification::createUser($pseudo, $mdp);
-                $vue = new VueCompte("",$path);
+                $vue = new VueCompte("", $path);
                 $html = $vue->render(1);
-            }
-            else {
+            } else {
                 $vue = new VueCompte(true, $path);
                 $html = $vue->render(0);
             }
@@ -62,14 +58,14 @@ class ControleurCompte
      * @param $args
      * @return mixed la reponse http
      */
-    public function seConnecter($rq, $rs, $args) {
+    public function seConnecter($rq, $rs, $args)
+    {
         $path = $rq->getURI()->getBasePath();
 
-        if (! isset($rq->getParsedBody()['username'])){
+        if (!isset($rq->getParsedBody()['username'])) {
             $vue = new VueCompte(true, $path);
             $html = $vue->render(1);
-        }
-        else {
+        } else {
             $pseudo = $rq->getParsedBody()['username'];
             $mdp = $rq->getParsedBody()['password'];
 
@@ -81,8 +77,7 @@ class ControleurCompte
             if ($etat == true) {
                 $vue = new VueBase($etat, $path);
                 $html = $vue->render(0);
-            }
-            else {
+            } else {
                 $vue = new VueCompte($etat, $path);
                 $html = $vue->render(1);
             }
@@ -98,10 +93,11 @@ class ControleurCompte
      * @param $args
      * @return mixed la reponse http
      */
-    public function seDeconnecter($rq, $rs, $args) {
+    public function seDeconnecter($rq, $rs, $args)
+    {
         $path = $rq->getURI()->getBasePath();
 
-        if (isset($_SESSION['profile'])){
+        if (isset($_SESSION['profile'])) {
             unset($_SESSION['profile']);
         }
 
@@ -111,4 +107,11 @@ class ControleurCompte
         return $rs;
     }
 
+    public function allUser($rq, $rs, $args)
+    {
+        $users = User::all();
+        $path = $rq->getURI()->getBasePath();
+        $v = new VueCompte($users, $path);
+        $v->render(1);
+    }
 }

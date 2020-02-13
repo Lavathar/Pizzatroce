@@ -34,10 +34,17 @@ class VueCreneau
      * @param int $index numero de la methode à utiliser
      * @return string contenu html
      */
-    public function render(int $index) : string {
-        switch ($index){
-            case 0 :
+    public function render(int $index): string
+    {
+        switch ($index) {
+            case 0:
                 $contenu = $this->afficherFormulaireAjoutCreneau();
+                break;
+            case 1:
+                $contenu = $this->afficherAllUsers();
+                break;
+            default:
+
                 break;
         }
 
@@ -62,7 +69,8 @@ END;
     }
 
 
-    private function afficherFormulaireAjoutCreneau() : string {
+    private function afficherFormulaireAjoutCreneau(): string
+    {
         $html = <<<END
 <form  action="" method="post">
     <h2>Ajouter un Creneau</h2>
@@ -86,4 +94,20 @@ END;
         return $html;
     }
 
+    public function afficherAllUsers(): string
+    {
+        $html = <<<END
+<div class="all_users">
+END;
+        foreach ($this->elem as $key => $value) {
+            $html .= <<<END
+    <p>$value->nom  $value->prenom  $value->mail  $value->tel  $value->photo  $value->permanence  $value->absence</p><br>
+END;
+        }
+        $html .= <<<END
+</div>
+END;
+
+        return $html;
+    }
 }
