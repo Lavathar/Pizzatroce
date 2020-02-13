@@ -289,4 +289,17 @@ table{
     text-decoration: underline;
     font-family: inherit;
     font-size: inherit;
+
+
+footer {
+    width: 100%;
+    background-color: #22222278;
+    position: absolute;
+    bottom: 0;
+}
+
+footer > h3 {
+    text-align: center;
+    color: white;
+
 }
