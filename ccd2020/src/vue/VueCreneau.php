@@ -71,9 +71,38 @@ END;
     }
 
     private function afficherCreneauDetail(){
-        //$creneau = $this->elem['creneau'];
-        //$besoins = $this->elem['besoins'];
-        return "";
+        $jours = array (
+          1=>"Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche"
+        );
+
+        $creneau = $this->elem['creneau'];
+        $besoins = $this->elem['besoins'];
+        $id = $this->elem['id'];
+
+        $liste='<div class="infos_besoin">';
+        foreach ($besoins as $besoin)
+            $liste = $liste.'<p>'.$besoin->label.'</p>';
+        $liste=$liste.'</div>';
+
+        $jour = $creneau->jour;
+        $semaine = $creneau->semaine;
+        $hDebut = $creneau->hDebut;
+        $hFin = $creneau->hFin;
+
+
+        $html = <<<END
+<div class="infos_creneau">
+    <p>$jours[$jour], semaine $semaine, de $hDebut à $hFin</p>
+</div>
+   $liste
+   
+<form  action="$this->path/besoin/$id" method="get">
+    <div class="formulaire">
+        <input type="submit" value="Ajouter un besoin">
+    </div>
+</form>
+END;
+        return $html;
         
     }
 
@@ -120,6 +149,6 @@ END;
                 $tab = $tab.'<a href="'.$this->path.'/creneauDetail/'.$c->id.'"><div class="creneau"><p>'.$c->hDebut.' - '.$c->hFin.'</p></div></a>';
             $tab = $tab.'</div>';
         }
-        return $tab."</div>";
+        return $tab."</div><div class='formulaire'><a href='$this->path/creneau/'>Ajouter créneau</a></div>";
     }
 }

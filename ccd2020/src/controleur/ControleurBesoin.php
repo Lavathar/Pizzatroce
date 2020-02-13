@@ -20,8 +20,9 @@ class ControleurBesoin
             -> get();
         $roles = Role::select("*")
             ->get();
+        $id=$args['id'];
 
-        $elem = array("roles"=>$roles, "creneaux"=>$crenaux);
+        $elem = array("roles"=>$roles, "creneaux"=>$crenaux, "id"=>$id);
 
         if (! isset($rq->getParsedBody()['role'])) {
 
@@ -36,7 +37,6 @@ class ControleurBesoin
                 ->where('label','=',$role)
                 ->first();
             $creneau = $rq->getParsedBody()['creneau'];
-            $id_creneau = substr($creneau, 1);
 
             $besoin = new Besoin();
             $besoin->creneau =  $creneau;

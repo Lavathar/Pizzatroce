@@ -53,7 +53,7 @@ class VueBase
 	</head>
 <body>
 	$header
-    
+
     $contenu
 </body>
 <html>
@@ -69,7 +69,7 @@ END;
         if (isset($_SESSION['profile'])) {
             $pseudo = $_SESSION['profile']['username'];
             $option = "<li><a href=\"$path/tableau\">Tableau</a></li>
-                        <li><a href=\"$path/connexion\">Modifier le profil</a></li>
+                        <li><a href=\"$path/connexion\">Changer de compte</a></li>
                         <li><a href=\"$path/deconnexion\">Se déconnecter</a></li>
 		                <li>$pseudo</li>";
         } else {

@@ -5,6 +5,7 @@ namespace pizzatroce\controleur;
 
 use pizzatroce\model\Besoin;
 use pizzatroce\model\Creneau;
+use pizzatroce\model\Role;
 use pizzatroce\vue\VueCreneau;
 
 class ControleurCreneau
@@ -65,9 +66,14 @@ class ControleurCreneau
         $path = $rq->getURI()->getBasePath();
         $id_creneau = $args['id'];
 
-        $besoins = Besoin::where('id','=', $id_creneau)->get();
-        $creneau = Creneau::where('id','=', $id_creneau)->first();
-        $tab = array("creneau"=>$creneau, "besoins"=>$besoins);
+        $besoins = Besoin::where('id','=', $id_creneau)
+            ->get();
+        $roles = Role::select('*')
+            ->get();
+        $res = $roles->intersect($besoins);
+        $creneau = Creneau::where('id','=', $id_creneau)
+            ->first();
+        $tab = array("creneau"=>$creneau, "besoins"=>$res, "id"=>$id_creneau);
 
         $v = new VueCreneau($tab, $path);
         $html = $v->render(2);

@@ -80,6 +80,12 @@ $app->get('/creneau[/]',
         return $controleur->creerCreneau($req, $resp, $args);
     });
 
+$app->post('/creneau[/]',
+    function($req, $resp, $args){
+        $controleur = new ControleurCreneau($this);
+        return $controleur->creerCreneau($req, $resp, $args);
+    });
+
 $app->get('/creneauDetail/{id}[/]',
     function($req, $resp, $args){
         $controleur = new ControleurCreneau($this);
@@ -96,13 +102,13 @@ $app->get('/tableau[/]',
 ////           BESOINS                ////
 //////////////////////////////////////////
 
-$app->get('/besoin[/]',
+$app->get('/besoin/{id}[/]',
     function($req, $resp, $args){
         $controleur = new ControleurBesoin($this);
         return $controleur->creerBesoin($req, $resp, $args);
     });
 
-$app->post('/besoin[/]',
+$app->post('/besoin/{id}[/]',
     function($req, $resp, $args){
         $controleur = new ControleurBesoin($this);
         return $controleur->creerBesoin($req, $resp, $args);
