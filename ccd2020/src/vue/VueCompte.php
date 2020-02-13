@@ -65,9 +65,6 @@ class VueCompte
 	$header
     
     $contenu
-    <footer>
-    <h3>©Pizzatroce 2020</h3>
-</footer>
 </body>
 <html>
 END;

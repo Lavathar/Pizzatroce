@@ -267,7 +267,7 @@ table{
     flex-direction: row;
     justify-content: center;
     flex-wrap: wrap;
-    margin-top: 50px;
+    margin-top: 10px;
 }
 
 .user {
@@ -291,15 +291,9 @@ table{
     font-size: inherit;
 }
 
-footer {
-    width: 100%;
-    background-color: #22222278;
-    position: absolute;
-    bottom: 0;
-}
-
-footer > h3 {
-    text-align: center;
-    color: white;
-
+.accueil {
+    display: flex;
+    justify-content: center;
+    font-size: 2em;
+    margin-top: 5em;
 }
