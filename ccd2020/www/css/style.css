@@ -196,3 +196,7 @@ input[type="submit"] {
     background: none;
     box-shadow: none;
 }
+
+tr{
+    color: #222;
+}

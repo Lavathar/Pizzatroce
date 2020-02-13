@@ -126,13 +126,15 @@ END;
     {
         $html = <<<END
 <div class="all_users">
+    <table><tr><th>nom</th><th>prenom</th><th>mail</th><th>tel</th><th>photo</th><th>permanence</th><th>absence</th></tr>
 END;
         foreach ($this->elem as $key => $value) {
             $html .= <<<END
-    <p>$value->nom  $value->prenom  $value->mail  $value->tel  $value->photo  $value->permanence  $value->absence</p><br>
+            <tr><td>$value->nom</td><td>$value->prenom</td><td>$value->mail</td><td>$value->tel</td><td>$value->photo</td><td>$value->permanence</td><td>$value->absence</td>
 END;
         }
         $html .= <<<END
+    </table>
 </div>
 END;
 
