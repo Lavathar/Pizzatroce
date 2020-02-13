@@ -9,7 +9,7 @@ use pizzatroce\vue\VueCompte;
 
 /**
  * Class ControleurCompte
- * @package mywishlist\controleur
+ * @package pizzatroce\controleur
  */
 class ControleurCompte
 {
