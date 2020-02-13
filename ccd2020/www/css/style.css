@@ -239,6 +239,10 @@ table{
     margin: 5px;
 }
 
+.colonne > a {
+    text-decoration: none;
+}
+
 .creneau {
     margin: 10px;
     height: 50px;
