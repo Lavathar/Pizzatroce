@@ -40,9 +40,6 @@ class VueCreneau
             case 0:
                 $contenu = $this->afficherFormulaireAjoutCreneau();
                 break;
-            case 1:
-                $contenu = $this->afficherAllUsers();
-                break;
             default:
 
                 break;
@@ -75,39 +72,27 @@ END;
 <form  action="" method="post">
     <h2>Ajouter un Creneau</h2>
     <div class="formulaire">
-        <input style="text-align:center" type="number" name="jour" placeholder="Jour" min="1" max="31" step="1" required>
+        <input style="text-align:center" type="number" name="jour" placeholder="Jour" min="1" max="7" step="1" required>
     </div>
     <div class="formulaire">
-        <input style="text-align:center" type="text" name="semaine" placeholder="Semaine" required>
+            <select name="semaine" size="1">
+                <option>A
+                <option>B
+                <option>C
+                <option>D
+            </select>
     </div>
     <div class="formulaire">
-        <input style="text-align:center" type="number" name="hDeb" placeholder="Heure de Debut" required>
+        <input style="text-align:center" type="number" name="hDeb" placeholder="H.Debut" min="1" max="24" step="1" required>
     </div>
     <div class="formulaire">
-        <input style="text-align:center" type="number" name="hFin" placeholder="Heure de Fin" required>
+        <input style="text-align:center" type="number" name="hFin" placeholder="H.Fin" min="1" max="24" step="1" required>
     </div>
     <div class="formulaire">
         <input type="submit" value="Valider">
     </div>
 </form>
 END;
-        return $html;
-    }
-
-    public function afficherAllUsers(): string
-    {
-        $html = <<<END
-<div class="all_users">
-END;
-        foreach ($this->elem as $key => $value) {
-            $html .= <<<END
-    <p>$value->nom  $value->prenom  $value->mail  $value->tel  $value->photo  $value->permanence  $value->absence</p><br>
-END;
-        }
-        $html .= <<<END
-</div>
-END;
-
         return $html;
     }
 }

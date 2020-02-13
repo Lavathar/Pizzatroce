@@ -44,7 +44,12 @@ class VueCompte
             case 1 :
                 $contenu = $this->afficherFromulaireConnexion();
                 break;
-        }
+            case 2:
+                $contenu = $this->afficherAllUsers();
+                break;
+            default:
+            break;
+            }
 
         $path = $this->path;
         $header = VueBase::getHeader($path);
@@ -117,4 +122,20 @@ END;
         return $html;
     }
 
+    public function afficherAllUsers(): string
+    {
+        $html = <<<END
+<div class="all_users">
+END;
+        foreach ($this->elem as $key => $value) {
+            $html .= <<<END
+    <p>$value->nom  $value->prenom  $value->mail  $value->tel  $value->photo  $value->permanence  $value->absence</p><br>
+END;
+        }
+        $html .= <<<END
+</div>
+END;
+
+        return $html;
+    }
 }

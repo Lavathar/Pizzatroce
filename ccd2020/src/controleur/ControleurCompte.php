@@ -112,6 +112,8 @@ class ControleurCompte
         $users = User::all();
         $path = $rq->getURI()->getBasePath();
         $v = new VueCompte($users, $path);
-        $v->render(1);
+        $html = $v->render(2);
+        $rs->getBody()->write($html);
+        return $rs;
     }
 }
