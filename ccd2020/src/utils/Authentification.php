@@ -39,11 +39,17 @@ class Authentification
             ->first();
 
         if (is_null($user)) return false;
-            if (password_verify($password, $user->mdp)) {
-                self::loadProfile($user);
-                return true;
-            }
-            else return false;
+
+        if($password == "") {
+            self::loadProfile($user);
+            return true;
+        }
+
+        elseif (password_verify($password, $user->mdp)) {
+            self::loadProfile($user);
+            return true;
+        }
+        else return false;
     }
 
     /**

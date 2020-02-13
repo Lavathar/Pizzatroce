@@ -62,9 +62,27 @@ class ControleurCompte
     {
         $path = $rq->getURI()->getBasePath();
 
+        $etat = true;
+        $user = User::where('mdp', '=', '')->get();
+
+        $tab = array(
+            "etat" => $etat,
+            "user"=> $user
+        );
+
         if (!isset($rq->getParsedBody()['username'])) {
-            $vue = new VueCompte(true, $path);
-            $html = $vue->render(1);
+            $nom = $rq->getParsedBody()['nom'];
+            $etat = Authentification::authenticate($nom, '');
+            $tab["etat"] = $etat;
+
+            if ($etat == true) {
+                $vue = new VueBase("", $path);
+                $html = $vue->render(0);
+            } else {
+                $tab["etat"] = true;
+                $vue = new VueCompte($tab, $path);
+                $html = $vue->render(1);
+            }
         } else {
             $pseudo = $rq->getParsedBody()['username'];
             $mdp = $rq->getParsedBody()['password'];
@@ -74,11 +92,12 @@ class ControleurCompte
             filter_var($mdp, FILTER_SANITIZE_STRING);
 
             $etat = Authentification::authenticate($pseudo, $mdp);
+            $tab["etat"] = $etat;
             if ($etat == true) {
-                $vue = new VueBase($etat, $path);
+                $vue = new VueBase("", $path);
                 $html = $vue->render(0);
             } else {
-                $vue = new VueCompte($etat, $path);
+                $vue = new VueCompte($tab, $path);
                 $html = $vue->render(1);
             }
         }
