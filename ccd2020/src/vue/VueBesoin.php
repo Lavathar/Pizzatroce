@@ -62,29 +62,38 @@ END;
 
     private function afficherFormCreerBesoin(){
         $creneaux="";
+        if (isset($this->elem['creneaux']))
         foreach ($this->elem['creneaux'] as $creneau)
-            $creneaux = $creneaux."<option>".$creneau->jour." ".$creneau->semaine." ".$creneau->hDebut." ".$creneau->hFin."</option> ";
+            $creneaux = $creneaux."<option>".$creneau->id./*$creneau->jour." ".$creneau->semaine." ".$creneau->hDebut." ".$creneau->hFin.*/"</option> ";
 
         $roles="";
-        foreach ($this->elem['roles'] as $role)
-            $roles = $roles."<option>".$role->label."</option> ";
+        if (isset($this->elem['roles']))
+            foreach ($this->elem['roles'] as $role)
+                $roles = $roles."<option>".$role->label."</option> ";
+
+        if(isset($this->elem["info"])) $info=$this->elem['info']; else $info="";
 
         $html = <<<END
 <form  action="" method="post">
+    <h2 class="succes">$info</h2>
     <h2>Création d'un besoin</h2>
     <div class="formulaire">
         <input style="text-align:center" type="text" name="description" placeholder="Description">
     </div>
-    <div class="select">
-        <select name="role" required>
-            $roles
-        </select>
+    <div class="formulaire">
+        <div class="select">
+            <select name="role" required>
+                $roles
+            </select>
+        </div>
     </div>
     <h2>Créneau</h2>
-    <div class="select">
-        <select name="creneau" required>
-            $creneaux
-        </select>
+    <div class="formulaire">
+        <div class="select">
+            <select name="creneau" required>
+                $creneaux
+            </select>
+        </div>
     </div>
     <div class="formulaire">
         <input type="submit" value="Valider">
