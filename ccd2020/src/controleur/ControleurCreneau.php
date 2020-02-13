@@ -84,13 +84,13 @@ class ControleurCreneau
     public function afficherCreneau($rq, $rs, $args){
         $path = $rq->getURI()->getBasePath();
         $listeCreneaux = array(
-          1 => Creneau::where('jour','=',1)->get(),
-          2 => Creneau::where('jour','=',2)->get(),
-          3 => Creneau::where('jour','=',3)->get(),
-          4 => Creneau::where('jour','=',4)->get(),
-          5 => Creneau::where('jour','=',5)->get(),
-          6 => Creneau::where('jour','=',6)->get(),
-          7 => Creneau::where('jour','=',7)->get()
+          "Lundi" => Creneau::where('jour','=',1)->orderBy('hDebut', 'asc')->get(),
+          "Mardi" => Creneau::where('jour','=',2)->orderBy('hDebut', 'asc')->get(),
+          "Mercredi" => Creneau::where('jour','=',3)->orderBy('hDebut', 'asc')->get(),
+          "Jeudi" => Creneau::where('jour','=',4)->orderBy('hDebut', 'asc')->get(),
+          "Vendredi" => Creneau::where('jour','=',5)->orderBy('hDebut', 'asc')->get(),
+          "Samedi" => Creneau::where('jour','=',6)->orderBy('hDebut', 'asc')->get(),
+          "Dimanche" => Creneau::where('jour','=',7)->orderBy('hDebut', 'asc')->get()
         );
 
         $v = new VueCreneau($listeCreneaux, $path);

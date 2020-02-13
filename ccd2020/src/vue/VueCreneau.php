@@ -102,10 +102,10 @@ END;
     public function afficherAllCrenaux(): string
     {
         $tab = "<div class='tableau'>";
-        for ($i=1; $i <= 7; $i++)
+        foreach($this->elem as $key=>$jour)
         {
-            $tab = $tab.'<div class="colonne">';
-            foreach ($this->elem[$i] as $c)
+            $tab = $tab.'<div class="colonne"><h3 class="jour">'.$key.'</h3>';
+            foreach ($jour as $c)
                 $tab = $tab.'<div class="creneau"><p>'.$c->hDebut." - ".$c->hFin.'</p></div>';
             $tab = $tab.'</div>';
         }

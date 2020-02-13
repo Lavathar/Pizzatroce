@@ -69,7 +69,7 @@ END;
         if (isset($_SESSION['profile'])) {
             $pseudo = $_SESSION['profile']['username'];
             $option = "<li><a href=\"$path/xxxxxxxxxx\">xxxxxxx</a></li>
-                        <li><a href=\"$path / connexion\">Modifier le profil</a></li>
+                        <li><a href=\"$path/connexion\">Modifier le profil</a></li>
                         <li><a href=\"$path/deconnexion\">Se déconnecter</a></li>
 		                <li>$pseudo</li>";
         } else {

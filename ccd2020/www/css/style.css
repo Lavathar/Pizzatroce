@@ -1,9 +1,9 @@
 html, body{
     margin:0;
     padding:0;
-    background-image: url("../images/wallpaper.png");
+    height: 100%;
+    background: linear-gradient(#b490ca, #5ee7df);
     background-repeat: no-repeat;
-    background-size: cover;
 }
 
 .accueil {
@@ -55,7 +55,7 @@ select {
 }
 
 header {
-    background: #d63031;
+    background: rgba(220, 159, 255, 0.38);
     display : inline-block;
     clear: both;
     width:100%;
@@ -220,4 +220,39 @@ table{
     max-width: 400px;
     display: block;
     margin: 50px auto 0;
+}
+
+
+.tableau {
+    display : flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.colonne {
+    text-align: center;
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    background: rgba(255, 255, 255, 0.20);
+    margin: 5px;
+}
+
+.creneau {
+    margin: 10px;
+    height: 50px;
+    display: table;
+    background-color: white;
+}
+
+.jour {
+    color : #172B4D;
+}
+
+.creneau > p{
+    color: black;
+    margin: 5px;
+    vertical-align: middle;
+    display: table-cell;
 }
