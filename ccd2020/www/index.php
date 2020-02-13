@@ -33,4 +33,40 @@ $app->get('/accueil[/]',
     });
 
 
+//////////////////////////////////////////
+////           COMPTES                ////
+//////////////////////////////////////////
+
+
+$app->get('/inscription[/]',
+    function($req, $resp, $args){
+        $controleur = new ControleurCompte($this);
+        return $controleur->creerCompte($req, $resp, $args);
+    });
+
+$app->post('/inscription[/]',
+    function($req, $resp, $args){
+        $controleur = new ControleurCompte($this);
+        return $controleur->creerCompte($req, $resp, $args);
+    });
+
+$app->get('/connexion[/]',
+    function($req, $resp, $args){
+        $controleur = new ControleurCompte($this);
+        return $controleur->seConnecter($req, $resp, $args);
+    });
+
+$app->post('/connexion[/]',
+    function($req, $resp, $args){
+        $controleur = new ControleurCompte($this);
+        return $controleur->seConnecter($req, $resp, $args);
+    });
+
+$app->get('/deconnexion[/]',
+    function($req, $resp, $args){
+        $controleur = new ControleurCompte($this);
+        return $controleur->seDeconnecter($req, $resp, $args);
+    });
+
+
 $app->run();

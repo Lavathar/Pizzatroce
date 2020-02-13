@@ -4,6 +4,8 @@
 namespace pizzatroce\controleur;
 
 
+use pizzatroce\model\User;
+
 /**
  * Pizzatroce trop bien
  * Class Authentification
@@ -18,15 +20,11 @@ class Authentification
      * @param $password mot de passe de l'utilisation
      */
     public static function createUser($userName, $password){
-        // A faire : vérifier la conformité de $password avec la police
-        // si ok :
         $hash = password_hash($password, PASSWORD_DEFAULT);
 
-        /*$newUser = new Utilisateur();
-        $newUser->username = $userName;
-        $newUser->password = $hash;
-        $newUser->role_id = 1;
-        $newUser->save();*/
+        $newUser = new User();
+        $newUser->nom = $userName;
+        $newUser->save();
     }
 
     /**
@@ -35,7 +33,7 @@ class Authentification
      * @param $password mot de passe de l'utilisation
      */
     public static function authenticate( $username, $password) {
-        /*$user = Utilisateur::select('*')
+        $user = User::select('*')
             ->where("username","=",$username)
             ->first();
 
@@ -44,7 +42,7 @@ class Authentification
                 self::loadProfile($user);
                 return true;
             }
-            else return false;*/
+            else return false;
     }
 
     /**
@@ -52,8 +50,10 @@ class Authentification
      * @param $user utilisateur
      */
     private static function loadProfile($user){
-
         $_SESSION['profile'] = array(
+            'id' => $user->id,
+            'username'   => $user->nom,
+            'client_ip'  => $_SERVER['REMOTE_ADDR']
          );
     }
 

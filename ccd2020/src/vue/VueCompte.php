@@ -85,6 +85,57 @@ END;
 
 
     /**
+     * Methode qui affiche le formulaire d'inscription
+     * @return string contenu html
+     */
+    private function afficherFromulaireInscription() : string {
+        $html = <<<END
+<form  action="" method="post">
+    <h2>Inscription</h2>
+    <div class="formulaire">
+        <input style="text-align:center" type="text" name="username" placeholder="Pseudonyme" required>
+    </div>
+    <div class="formulaire">
+        <input style="text-align:center" type="password" name="password" placeholder="Mot de passe" required>
+    </div>
+    <div class="formulaire">
+        <input type="submit" value="Valider">
+    </div>
+</form>
+END;
+        return $html;
+    }
+
+    /**
+     * Methode qui affiche le formulaire de connexion
+     * @return string contenu html
+     */
+    private function afficherFromulaireConnexion() : string {
+
+        $erreur = "";
+        if ($this->elem == false)
+            $erreur = "<h3>Mot de passe ou nom d'utilisateur incorrect(s)</h3>";
+
+        $html = <<<END
+$erreur
+<form  action="" method="post">
+    <h2>Connexion</h2>
+    <div class="formulaire">
+        <input style="text-align:center" type="text" name="username" placeholder="Pseudonyme" required>
+    </div>
+    <div class="formulaire">
+        <input style="text-align:center" type="password" name="password" placeholder="Mot de passe" required>
+    </div>
+    <div class="formulaire">
+        <input type="submit" value="Valider">
+    </div>
+</form>
+END;
+        return $html;
+    }
+
+
+    /**
      * Methode static qui creer le header
      * @return string contenu html
      */
