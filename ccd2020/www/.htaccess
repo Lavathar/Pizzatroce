@@ -2,8 +2,7 @@ RewriteEngine On
 #
 # RewriteBase indispensable sur webetu :
 
-# RewriteBase /www/marcolet3u/php-project/
-
+# RewriteBase /www/lhuilli92u/Pizzatroce/ccd2020/www/
 
 #
 # Pour interdire l'accès aux répertoires contenant du code
