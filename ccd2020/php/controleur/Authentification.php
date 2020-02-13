@@ -5,8 +5,9 @@ namespace pizzatroce\controleur;
 
 
 /**
+ * Pizzatroce trop bien
  * Class Authentification
- * @package mywishlist\controleur
+ * @package pizzatroce\controleur
  */
 class Authentification
 {
