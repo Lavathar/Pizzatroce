@@ -70,6 +70,10 @@ $app->get('/deconnexion[/]',
         return $controleur->seDeconnecter($req, $resp, $args);
     });
 
+/////////////////////////////////////////
+////           CRENAUX               ////
+/////////////////////////////////////////
+
 $app->get('/creneau[/]',
     function($req, $resp, $args){
         $controleur = new ControleurCreneau($this);
@@ -80,6 +84,12 @@ $app->post('/creneau[/]',
     function($req, $resp, $args){
         $controleur = new ControleurCreneau($this);
         return $controleur->creerCreneau($req, $resp, $args);
+    });
+
+$app->get('/listecreneaux[/]',
+    function($req, $resp, $args){
+        $controleur = new ControleurCreneau($this);
+        return $controleur->afficherCreneau($req, $resp, $args);
     });
 
 //////////////////////////////////////////

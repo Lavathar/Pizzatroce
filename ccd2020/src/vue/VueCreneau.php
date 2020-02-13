@@ -40,8 +40,9 @@ class VueCreneau
             case 0:
                 $contenu = $this->afficherFormulaireAjoutCreneau();
                 break;
+            case 1:
+                $contenu = $this->afficherAllCrenaux();
             default:
-
                 break;
         }
 
@@ -96,5 +97,18 @@ END;
 </form>
 END;
         return $html;
+    }
+
+    public function afficherAllCrenaux(): string
+    {
+        $tab = "<div class='tableau'>";
+        for ($i=1; $i <= 7; $i++)
+        {
+            $tab = $tab.'<div class="colonne">';
+            foreach ($this->elem[$i] as $c)
+                $tab = $tab.'<div class="creneau"><p>'.$c->hDebut." - ".$c->hFin.'</p></div>';
+            $tab = $tab.'</div>';
+        }
+        return $tab."</div>";
     }
 }

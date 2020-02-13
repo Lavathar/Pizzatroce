@@ -34,13 +34,13 @@ class ControleurCreneau
                 ->get();
 
             foreach($heure as $h) {
-                if(($hDeb > $h->hDebut) && ($hDeb < $h->hFin)) {
+                if(($hDeb >= $h->hDebut) && ($hDeb <= $h->hFin)) {
                     $vue = new VueCreneau("Le creneau existe deja", $path);
                     $html = $vue->render(0);
                     $rs->getBody()->write($html);
                     return $rs;
                 }
-                elseif(($hFin > $h->hDebut) && ($hFin < $h->hFin)) {
+                elseif(($hFin >= $h->hDebut) && ($hFin <= $h->hFin)) {
                     $vue = new VueCreneau("Le creneau existe deja", $path);
                     $html = $vue->render(0);
                     $rs->getBody()->write($html);
@@ -80,4 +80,23 @@ class ControleurCreneau
         $rs->getBody()->write($html);
         return $rs;
     }
+
+    public function afficherCreneau($rq, $rs, $args){
+        $path = $rq->getURI()->getBasePath();
+        $listeCreneaux = array(
+          1 => Creneau::where('jour','=',1)->get(),
+          2 => Creneau::where('jour','=',2)->get(),
+          3 => Creneau::where('jour','=',3)->get(),
+          4 => Creneau::where('jour','=',4)->get(),
+          5 => Creneau::where('jour','=',5)->get(),
+          6 => Creneau::where('jour','=',6)->get(),
+          7 => Creneau::where('jour','=',7)->get()
+        );
+
+        $v = new VueCreneau($listeCreneaux, $path);
+        $html = $v->render(1);
+        $rs->getBody()->write($html);
+        return $rs;
+    }
 }
+
