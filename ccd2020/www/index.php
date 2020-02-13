@@ -92,4 +92,10 @@ $app->get('/besoin[/]',
         return $controleur->creerBesoin($req, $resp, $args);
     });
 
+$app->post('/besoin[/]',
+    function($req, $resp, $args){
+        $controleur = new ControleurBesoin($this);
+        return $controleur->creerBesoin($req, $resp, $args);
+    });
+
 $app->run();
