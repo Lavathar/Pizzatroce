@@ -68,7 +68,7 @@ END;
     public static function getHeader($path) : string {
         if (isset($_SESSION['profile'])) {
             $pseudo = $_SESSION['profile']['username'];
-            $option = "<li><a href=\"$path/xxxxxxxxxx\">xxxxxxx</a></li>
+            $option = "<li><a href=\"$path/tableau\">Tableau</a></li>
                         <li><a href=\"$path/connexion\">Modifier le profil</a></li>
                         <li><a href=\"$path/deconnexion\">Se déconnecter</a></li>
 		                <li>$pseudo</li>";
@@ -80,7 +80,7 @@ END;
         $html = <<<END
 <header>
      <div id="rubrique">
-         <h1 id="titreR"><a href="$path/">Pizzatroce </a></h1>
+         <h1 id="titreR"><a href="$path/">CoBoard</a></h1>
          <nav>
              <ul>
                   $option

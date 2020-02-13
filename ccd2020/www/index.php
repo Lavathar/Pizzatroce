@@ -86,7 +86,7 @@ $app->post('/creneau[/]',
         return $controleur->creerCreneau($req, $resp, $args);
     });
 
-$app->get('/listecreneaux[/]',
+$app->get('/tableau[/]',
     function($req, $resp, $args){
         $controleur = new ControleurCreneau($this);
         return $controleur->afficherCreneau($req, $resp, $args);
