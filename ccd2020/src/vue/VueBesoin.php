@@ -76,6 +76,8 @@ END;
 
         if(isset($this->elem["info"])) $info=$this->elem['info']; else $info="";
 
+        $id=$this->elem['id'];
+
         $html = <<<END
 <form  action="" method="post">
     <p class="succes">$info</p>
@@ -90,13 +92,8 @@ END;
             </select>
         </div>
     </div>
-    <h2>Créneau</h2>
     <div class="formulaire">
-        <div class="select">
-            <select name="creneau" required>
-                $creneaux
-            </select>
-        </div>
+        <input style="text-align:center" type="hidden" name="creneau" value="$id">
     </div>
     <div class="formulaire">
         <input type="submit" value="Valider">

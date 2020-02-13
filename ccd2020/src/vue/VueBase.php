@@ -69,7 +69,7 @@ END;
         if (isset($_SESSION['profile'])) {
             $pseudo = $_SESSION['profile']['username'];
             $option = "<li><a href=\"$path/tableau\">Tableau</a></li>
-                        <li><a href=\"$path/connexion\">Modifier le profil</a></li>
+                        <li><a href=\"$path/connexion\">Changer de compte</a></li>
                         <li><a href=\"$path/deconnexion\">Se déconnecter</a></li>
 		                <li>$pseudo</li>";
         } else {
@@ -99,6 +99,9 @@ END;
      */
     private function afficherAccueil() :string {
         $html = <<<END
+<div class="accueil">
+    <h1>Grande épicerie générale</h1>
+</div>
 <footer>
     <h3>©Pizzatroce 2020</h3>
 </footer>
