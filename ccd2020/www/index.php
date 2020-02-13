@@ -69,6 +69,11 @@ $app->get('/deconnexion[/]',
         return $controleur->seDeconnecter($req, $resp, $args);
     });
 
+$app->get('/creneau[/]',
+    function($req, $resp, $args){
+        $controleur = new ControleurCreneau($this);
+        //return $controleur->methode($req, $resp, $args);
+    });
 
 //////////////////////////////////////////
 ////           BESOINS                ////
