@@ -118,6 +118,12 @@ h2 {
     justify-content : center;
 }
 
+.erreur {
+    display : flex;
+    justify-content : center;
+    color: #d63031;
+}
+
 p{
     margin-bottom: 0;
     margin-left : 4em;
