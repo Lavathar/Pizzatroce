@@ -16,17 +16,20 @@ class ControleurBesoin
     {
         $path = $rq->getURI()->getBasePath();
 
-        if (! isset($rq->getParsedBody()['role'])) {
-            $crenaux = Creneau::select("*")
-                -> get();
-            $roles = Role::select("*")
-                ->get();
+        $crenaux = Creneau::select("*")
+            -> get();
+        $roles = Role::select("*")
+            ->get();
 
-            $elem = array("roles"=>$roles, "creneaux"=>$crenaux);
+        $elem = array("roles"=>$roles, "creneaux"=>$crenaux);
+
+        if (! isset($rq->getParsedBody()['role'])) {
+
             $vue = new VueBesoin($elem, $path);
             $html = $vue->render(0);
         }
         else {
+            $elem["info"]="Besoin ajouté avec succès";
             $desc = $rq->getParsedBody()['description'];
             $role = $rq->getParsedBody()['role'];
             $role_id = Role::select("id")
@@ -41,7 +44,7 @@ class ControleurBesoin
             $besoin->role=$role_id->id;
             $besoin->save();
 
-            $vue = new VueBesoin(array("info"=>"Besoin ajouté avec succès"), $path);
+            $vue = new VueBesoin($elem, $path);
             $html = $vue->render(0);
         }
 

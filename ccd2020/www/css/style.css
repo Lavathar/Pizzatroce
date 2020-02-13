@@ -203,6 +203,11 @@ input[type="submit"] {
     box-shadow: none;
 }
 
+.succes {
+    color: lawngreen;
+    font-size: 1.2em;
+}
+
 tr{
     color: #222;
     
